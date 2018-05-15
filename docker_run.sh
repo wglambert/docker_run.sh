@@ -4,6 +4,7 @@ if [ -z "$(docker ps | grep $image)" ]; then
 else
         image_num=$(echo -e "$image$(docker ps | grep $image | wc -l)")
 fi
+#variables for sanitizing the given image into a valid container name
 
 echo "options; defaults to -it"
    read args
