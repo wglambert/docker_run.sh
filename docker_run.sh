@@ -12,7 +12,7 @@ echo "options; defaults to -it"
         args="-it"
       fi
 echo "$image_num"
-      echo "Run entrypoint and in background, y/n?"
+      echo "Run entrypoint and run in background, y/n?"
         read answer
         case $answer in
                 y | yes | "") \
