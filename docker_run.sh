@@ -4,19 +4,18 @@ if [ -z "$(docker ps | grep $image)" ]; then
 else
         image_num=$(echo -e "$image$(docker ps | grep $image | wc -l)")
 fi
-#variables for sanitizing the given image into a valid container name
 
-echo "options; defaults to -it"
-   read args
+echo "options; defaults to -d"
+   read -e args
       if [ -z "$args" ]; then \
-        args="-it"
+        args="-d"
       fi
 echo "$image_num"
-      echo "Run entrypoint and run in background, y/n?"
-        read answer
+      echo "Run entrypoint and run in background, else foreground, y/n?"
+        read -e answer
         case $answer in
                 y | yes | "") \
-                  docker run --rm $args --name $image_num -dit $1 && \
+                  docker run --rm $args --name $image_num -d $1 && \
                   echo -e "$ docker run --rm $args --name $image_num -dit $1
 $ docker exec -it $image_num bash" &&
 #                 sleep 1 &&
@@ -26,4 +25,3 @@ $ docker exec -it $image_num bash" &&
                   echo -e "docker run --rm $args --name $image_num -it $1 bash" &&
                   docker run --rm $args --name $image_num -it $1 bash ;;
         esac
-          }
