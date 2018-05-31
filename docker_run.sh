@@ -16,12 +16,11 @@ echo "$image_num"
         case $answer in
                 y | yes | "") \
                   docker run --rm $args --name $image_num -d $1 && \
-                  echo -e "$ docker run --rm $args --name $image_num -dit $1
-$ docker exec -it $image_num bash" &&
-#                 sleep 1 &&
-                  docker exec -it $image_num bash ;;
+                  echo -e "$ docker run --rm $args --name $image_num -d $1
+$ docker exec -it $image_num bash" && 
+                  docker exec -it $image_num bash ;; 
 
                 n | no) \
-                  echo -e "docker run --rm $args --name $image_num -it $1 bash" &&
-                  docker run --rm $args --name $image_num -it $1 bash ;;
+                  echo -e "docker run --rm $args --name $image_num -it $1" &&
+                  docker run --rm $args --name $image_num -it $1 ;;
         esac
