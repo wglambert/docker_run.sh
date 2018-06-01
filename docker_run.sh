@@ -16,7 +16,7 @@ echo "$image_num"
         case $answer in
                 y | yes | "") \
                   docker run --rm $args --name $image_num -d $1 && \
-                  echo -e "$ docker run --rm $args --name $image_num -d $1
+                  echo -e "$ docker run --rm $args --name $image_num $1
 $ docker exec -it $image_num bash" && 
                   docker exec -it $image_num bash ;; 
 
