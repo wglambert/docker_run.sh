@@ -1,4 +1,4 @@
-image=$(echo "$1" | cut -d: -f1 | cut -d- -f1)
+image=$(echo "$1" | cut -d- -f1 | cut -d: -f1 | cut -d- -f1)
 if [ -z "$(docker ps | grep $image)" ]; then
         image_num=$image
 else
@@ -17,7 +17,7 @@ echo "options; defaults to -d"
         args="-d"
       fi
 echo -e "container name: \033[0;36m$image_num\033[0m \n"
-      echo "Exec -it $image_num $shell, y/n?"
+      echo "exec -it $image_num $shell, y/n?"
         read -e answer
         case $answer in
                 y | yes | "") \
