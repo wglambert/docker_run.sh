@@ -1,4 +1,4 @@
-image=$(echo "$1" | cut -d- -f1 | cut -d: -f1 | cut -d- -f1)
+image=$(echo "$1" | cut -d- -f1 | cut -d: -f1 | cut -d- -f1 | cut -d/ -f2)
 if [ -z "$(docker ps | grep $image)" ]; then
         image_num=$image
 else
