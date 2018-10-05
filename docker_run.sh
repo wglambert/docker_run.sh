@@ -1,5 +1,8 @@
 #!/bin/bash
 
+if [ -z "$1" ] || [ -n "$2" ]; then echo "Usage: ${0##*/} IMAGE" && exit;
+fi
+
 image=$(echo "$1" | cut -d- -f1 | cut -d: -f1 | cut -d/ -f2)
 if [ -z "$(docker ps | grep $image)" ]; then
         image_num=$image
